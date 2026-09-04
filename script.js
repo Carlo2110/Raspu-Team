@@ -21,7 +21,7 @@ const comunicati = [
       <p><i>Il presidente</i></p>
       <p><i>Carlo Maria Piccolo</i></p>
     `,
-    data: "4 Settembre 2026 • 12:45"
+    data: "4 Settembre 2026 • 00:45"
   },
   {
     id: "1",
