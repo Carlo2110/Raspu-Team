@@ -3,10 +3,13 @@
  * Per aggiungere un nuovo comunicato, incollalo IN CIMA a questa lista.
  */
 const comunicati = [
-  /*{
+  
+  //Comunicato template
+  /*
+  {
     id: "3",
-    titolo: "COMUNICATO UFFICIALE: LA MIA PIDANZATA ",
-    estratto: "Il Raspu Team commenta le mosse di riparazione, saluta Cuffy, Casadei e Cutrone e accoglie Lulli, Nico Gonzalez e Gnonto...",
+    titolo: "COMUNICATO UFFICIALE:",
+    estratto: "Il Raspu Team ...",
     testo: `
       <p></p>
       <br>
