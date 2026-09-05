@@ -28,7 +28,7 @@ const comunicati = [
     titolo: "COMUNICATO UFFICIALE: LA MIA PIDANZATA È LA PIÙ BELLA DEL MONDO",
     estratto: "Il Raspu Team vuole togliere ogni dubbio, e affermare che la sua pidanzata...",
     testo: `
-      <p>IL RASPU TEAM vuole togliere ogni dubbio, e affermare che la sua pidanzata è la più bella del mondo.</p>
+      <p>Il RASPU TEAM vuole togliere ogni dubbio, e affermare che la sua pidanzata è la più bella del mondo.</p>
       <br>
       <p>Oggi, come ieri e come sarà per sempre, è importante ricordare che Tina Ghidoni è la miglior fidanzata del mondo, nonchè la più bella.</p>
       <br>
@@ -36,7 +36,7 @@ const comunicati = [
       <br>
       <p>Inoltre vogliamo raggiungere ogni donna per far capire che io sono occupato e di proprietà di Tina Ghidoni.</p>
       <br>
-      <p>Ti amo tanto pisellina! Sei speciale e unica! E RICORDA PER CHE SQUADRA TIFI (scusami ancora per malen...)</p>
+      <p>Ti amo tanto pisellina! Sei speciale e unica! E RICORDA PER CHE SQUADRA TIFI (scusami ancora per Malen...)</p>
       <br>
       <p><i>Il presidente</i></p>
       <p><i>Carlo Maria Piccolo</i></p>
