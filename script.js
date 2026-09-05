@@ -23,6 +23,9 @@ const comunicati = [
     `,
     data: "4 Settembre 2026 • 00:45"
   },*/
+
+  /*
+  //Comunicato scherzoso, per la mia fidanzata
   {
     id: "3",
     titolo: "COMUNICATO UFFICIALE: LA MIA PIDANZATA È LA PIÙ BELLA DEL MONDO",
@@ -42,7 +45,8 @@ const comunicati = [
       <p><i>Carlo Maria Piccolo</i></p>
     `,
     data: "5 Settembre 2026 • 14:45"
-  },
+  },*/
+
   {
     id: "2",
     titolo: "COMUNICATO UFFICIALE: ASTA DI RIPARAZIONE",
