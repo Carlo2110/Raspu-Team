@@ -3,6 +3,46 @@
  * Per aggiungere un nuovo comunicato, incollalo IN CIMA a questa lista.
  */
 const comunicati = [
+  /*{
+    id: "3",
+    titolo: "COMUNICATO UFFICIALE: LA MIA PIDANZATA ",
+    estratto: "Il Raspu Team commenta le mosse di riparazione, saluta Cuffy, Casadei e Cutrone e accoglie Lulli, Nico Gonzalez e Gnonto...",
+    testo: `
+      <p></p>
+      <br>
+      <p></p>
+      <br>
+      <p></p>
+      <br>
+      <p></p>
+      <br>
+      <p></p>
+      <br>
+      <p><i>Il presidente</i></p>
+      <p><i>Carlo Maria Piccolo</i></p>
+    `,
+    data: "4 Settembre 2026 • 00:45"
+  },*/
+  {
+    id: "3",
+    titolo: "COMUNICATO UFFICIALE: LA MIA PIDANZATA È LA PIÙ BELLA DEL MONDO",
+    estratto: "Il Raspu Team vuole togliere ogni dubbio, e affermare che la sua pidanzata...",
+    testo: `
+      <p>IL RASPU TEAM vuole togliere ogni dubbio, e affermare che la sua pidanzata è la più bella del mondo.</p>
+      <br>
+      <p>Oggi, come ieri e come sarà per sempre, è importante ricordare che Tina Ghidoni è la miglior fidanzata del mondo, nonchè la più bella.</p>
+      <br>
+      <p>Questo comunicato è rivolto a tutti i tifosi del Raspu Team, che condividono la stessa passione e il medesimo orgoglio per la nostra squadra e per la mia pidanzata con la pisellina storta.</p>
+      <br>
+      <p>Inoltre vogliamo raggiungere ogni donna per far capire che io sono occupato e di proprietà di Tina Ghidoni.</p>
+      <br>
+      <p>Ti amo tanto pisellina! Sei speciale e unica! E RICORDA PER CHE SQUADRA TIFI (scusami ancora per malen...)</p>
+      <br>
+      <p><i>Il presidente</i></p>
+      <p><i>Carlo Maria Piccolo</i></p>
+    `,
+    data: "5 Settembre 2026 • 14:45"
+  },
   {
     id: "2",
     titolo: "COMUNICATO UFFICIALE: ASTA DI RIPARAZIONE",
