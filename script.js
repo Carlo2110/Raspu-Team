@@ -55,7 +55,7 @@ const comunicati = [
     titolo: "COMUNICATO UFFICIALE: ASTA DI RIPARAZIONE",
     estratto: "Il Raspu Team commenta le mosse di riparazione, saluta Cuffy, Casadei e Cutrone e accoglie Lulli, Nico Gonzalez e Gnonto...",
     testo: `
-      <p>Il Raspu Team FC interviene pubblicamente per esprimere il proprio sconcerto di fronte ad alcune mosse a dir poco terribili registrate in questa sessione di riparazione.</p>
+      <p>Il Raspu Team interviene pubblicamente per esprimere il proprio sconcerto di fronte ad alcune mosse a dir poco terribili registrate in questa sessione di riparazione.</p>
       <br>
       <p>La società si augura vivamente che gli altri presidenti e allenatori possano ritrovare il senno e un minimo di lucidità da qui fino a gennaio, evitando ulteriori scempi calcistici.</p>
       <br>
