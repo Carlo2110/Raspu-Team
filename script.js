@@ -92,7 +92,7 @@ const comunicati = [
 const calendarioRaspu = [
   { giornata: "1ª Giornata", casa: "RASPU TEAM", fuori: "Lecce Bombo", risultato: "3-2", dataLimite: "2026-08-23" },
   { giornata: "2ª Giornata", casa: "LSB", fuori: "RASPU TEAM", risultato: "4-3", dataLimite: "2026-08-30" },
-  { giornata: "3ª Giornata", casa: "Real Madrink", fuori: "RASPU TEAM", risultato: "-", dataLimite: "2026-09-07" },
+  { giornata: "3ª Giornata", casa: "Real Madrink", fuori: "RASPU TEAM", risultato: "3-3", dataLimite: "2026-09-07" },
   { giornata: "4ª Giornata", casa: "RASPU TEAM", fuori: "VIRTUAL PONTE", risultato: "-", dataLimite: "2026-09-14" },
   { giornata: "5ª Giornata", casa: "KDA Commando", fuori: "RASPU TEAM", risultato: "-", dataLimite: "2026-09-20" },
   { giornata: "6ª Giornata", casa: "RASPU TEAM", fuori: "One Pisa", risultato: "-", dataLimite: "2026-10-12" },

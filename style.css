@@ -79,6 +79,7 @@ nav ul {
   display: flex;
   justify-content: center;
   list-style: none;
+  flex-wrap: wrap;
 }
 
 nav a {
@@ -300,7 +301,9 @@ nav a:hover, nav a.active {
   margin-top: 5px;
 }
 
-/* RESPONSIVE */
+/* ==========================================
+   OTTIMIZZAZIONE RESPONSIVE PER SMARTPHONE
+   ========================================== */
 @media (max-width: 820px) {
   .grid-home {
     grid-template-columns: 1fr;
@@ -309,5 +312,38 @@ nav a:hover, nav a.active {
   .header-container {
     flex-direction: column;
     text-align: center;
+  }
+}
+
+@media (max-width: 600px) {
+  /* Adatta i margini generali per non sprecare spazio sugli schermi stretti */
+  .container {
+    padding: 12px !important;
+    margin: 10px auto !important;
+    border-width: 2px;
+  }
+
+  /* Rimpicciolisci leggermente il titolo principale della rosa/pagine */
+  main.main-content > h2 {
+    font-size: 1.3rem !important;
+    word-break: break-word;
+  }
+
+  /* Menu di navigazione più compatto nei display piccoli */
+  nav a {
+    padding: 10px 15px;
+    font-size: 0.9rem;
+  }
+
+  /* Adatta le voci della rosa e del mercato per evitare sovrapposizioni */
+  main.main-content ul li {
+    font-size: 0.85rem !important;
+    padding: 6px 4px !important;
+  }
+
+  /* Evita che le scritte lunghe nel blocco mercato vadano troppo fuori riga */
+  section[style*="background: #fdfbf7"] ul li {
+    flex-wrap: wrap;
+    gap: 4px;
   }
 }
