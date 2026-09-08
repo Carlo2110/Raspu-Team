@@ -347,3 +347,41 @@ nav a:hover, nav a.active {
     gap: 4px;
   }
 }
+
+/* --- PULSANTE AREA PRESIDENTE (ANGOLO ALTO A DESTRA) --- */
+.area-presidente-destra {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  background-color: var(--amaranto-scuro);
+  color: var(--oro);
+  border: 2px solid var(--oro);
+  padding: 8px 14px;
+  font-size: 0.75rem;
+  font-family: 'Arial Black', Gadget, sans-serif;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 6px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.6);
+  transition: all 0.25s ease;
+  z-index: 50;
+}
+
+.area-presidente-destra:hover {
+  background-color: var(--oro);
+  color: var(--scuro);
+  box-shadow: 0 0 12px rgba(229, 179, 56, 0.6);
+  transform: translateY(-1px);
+}
+
+/* Controllo rapido per smartphone */
+@media (max-width: 768px) {
+  .area-presidente-destra {
+    position: static;
+    display: inline-block;
+    margin: 10px auto 0 auto;
+  }
+  header {
+    text-align: center;
+  }
+}
