@@ -12,28 +12,20 @@ if (!isset($_SESSION['user'])) {
 $idDaEliminare = $_GET['id'] ?? null;
 
 if ($idDaEliminare !== null) {
-    $scriptPath = 'script.js';
+    $jsonPath = 'comunicati.json';
     
-    if (file_exists($scriptPath)) {
-        $scriptContent = file_get_contents($scriptPath);
-
-        // Estrae l'array dei comunicati
-        preg_match('/const\s+comunicati\s*=\s*\[(.*?)\];/s', $scriptContent, $matches);
+    if (file_exists($jsonPath)) {
+        $jsonContent = file_get_contents($jsonPath);
+        $comunicati = json_decode($jsonContent, true);
         
-        if (!empty($matches[1])) {
-            $arrayBody = $matches[1];
-
-            // Rimuove l'oggetto specifico corrispondente all'id tramite espressione regolare
-            // Cerca il blocco { ... id: "X", ... } e lo rimuove
-            $pattern = '/\s*\{\s*id:\s*" ' . preg_quote($idDaEliminare, '/') . ' ".*?\},\s*/s';
-            // Gestione alternativa nel caso le virgolette dell'id siano senza spazi
-            $patternAlt = '/\s*\{\s*id:\s*"' . preg_quote($idDaEliminare, '/') . '".*?\},\s*/s';
+        if (is_array($comunicati)) {
+            // Filtriamo l'array escludendo il comunicato con l'id da eliminare
+            $comunicatiAggiornati = array_values(array_filter($comunicati, function($c) use ($idDaEliminare) {
+                return $c['id'] !== $idDaEliminare;
+            }));
             
-            $nuovoArrayBody = preg_replace($patternAlt, '', $arrayBody);
-
-            // Sostituisce nel file script.js
-            $nuovoScriptContent = str_replace($arrayBody, $nuovoArrayBody, $scriptContent);
-            file_put_contents($scriptPath, $nuovoScriptContent);
+            // Salviamo il file JSON aggiornato (mantenendo una formattazione pulita)
+            file_put_contents($jsonPath, json_encode($comunicatiAggiornati, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
         }
     }
 }

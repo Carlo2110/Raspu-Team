@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
         
         // Aggiunge la firma istituzionale in fondo
-        $testoFormattato .= "<p><i>Il presidente</i></p>\n      <p><i>Carlo Maria Piccolo</i></p>";
+        $testoFormattato .= "<p><i>Il presidente</i></p><p><i>Carlo Maria Piccolo</i></p>";
 
         $giorniMese = [
             1 => 'Gennaio', 2 => 'Febbraio', 3 => 'Marzo', 4 => 'Aprile', 
@@ -40,36 +40,35 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         ];
         $dataOggi = date('j') . ' ' . $giorniMese[(int)date('n')] . ' ' . date('Y') . ' • ' . date('H:i');
 
-        $scriptPath = 'script.js';
+        $jsonPath = 'comunicati.json';
         
-        if (file_exists($scriptPath)) {
-            $scriptContent = file_get_contents($scriptPath);
+        if (file_exists($jsonPath)) {
+            $jsonContent = file_get_contents($jsonPath);
+            $comunicati = json_decode($jsonContent, true) ?? [];
 
-            preg_match('/const\s+comunicati\s*=\s*\[(.*?)\];/s', $scriptContent, $matches);
-            
-            if (!empty($matches[1])) {
-                preg_match_all('/id:\s*"(\d+)"/', $matches[1], $idMatches);
-                $maxId = 0;
-                if (!empty($idMatches[1])) {
-                    $maxId = max(array_map('intval', $idMatches[1]));
+            // Calcola il nuovo ID massimo
+            $maxId = 0;
+            foreach ($comunicati as $c) {
+                if (isset($c['id']) && is_numeric($c['id'])) {
+                    $maxId = max($maxId, intval($c['id']));
                 }
-                $nuovoId = (string)($maxId + 1);
-
-                $nuovoElementoJS = "  {\n" .
-                    "    id: \"" . $nuovoId . "\",\n" .
-                    "    titolo: " . json_encode($titolo) . ",\n" .
-                    "    estratto: " . json_encode($estratto) . ",\n" .
-                    "    testo: `\n      " . $testoFormattato . "\n    `,\n" .
-                    "    data: \"" . $dataOggi . "\"\n" .
-                    "  },\n";
-
-                $vecchioArrayBody = $matches[1];
-                $nuovoArrayBody = "\n" . $nuovoElementoJS . ltrim($vecchioArrayBody);
-
-                $nuovoScriptContent = str_replace($matches[1], $nuovoArrayBody, $scriptContent);
-                
-                file_put_contents($scriptPath, $nuovoScriptContent);
             }
+            $nuovoId = (string)($maxId + 1);
+
+            // Crea il nuovo elemento
+            $nuovoElemento = [
+                "id" => $nuovoId,
+                "titolo" => $titolo,
+                "estratto" => $estratto,
+                "testo" => $testoFormattato,
+                "data" => $dataOggi
+            ];
+
+            // Inserisce il nuovo comunicato in cima alla lista
+            array_unshift($comunicati, $nuovoElemento);
+
+            // Salva nel file JSON
+            file_put_contents($jsonPath, json_encode($comunicati, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
         }
     }
 }

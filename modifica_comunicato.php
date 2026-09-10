@@ -16,33 +16,34 @@ if ($idDaModificare === null) {
     exit;
 }
 
-$scriptPath = 'script.js';
+$jsonPath = 'comunicati.json';
 $titoloAttuale = '';
 $estrattoAttuale = '';
 $testoGrezzoAttuale = '';
 $dataOriginale = '';
 
-if (file_exists($scriptPath)) {
-    $scriptContent = file_get_contents($scriptPath);
-    preg_match('/const\s+comunicati\s*=\s*\[(.*?)\];/s', $scriptContent, $matches);
+if (file_exists($jsonPath)) {
+    $jsonContent = file_get_contents($jsonPath);
+    $comunicati = json_decode($jsonContent, true);
     
-    if (!empty($matches[1])) {
-        // Estrae l'oggetto corrispondente all'ID
-        $pattern = '/\{\s*id:\s*"' . preg_quote($idDaModificare, '/') . '",\s*titolo:\s*(.*?),\s*estratto:\s*(.*?),\s*testo:\s*`(.*?)`,\s*data:\s*"(.*?)"\s*\}/s';
-        if (preg_match($pattern, $matches[1], $comunicatoMatch)) {
-            $titoloAttuale = json_decode($comunicatoMatch[1]);
-            $estrattoAttuale = json_decode($comunicatoMatch[2]);
-            $testoHtml = trim($comunicatoMatch[3]);
-            $dataOriginale = $comunicatoMatch[4];
+    if (is_array($comunicati)) {
+        foreach ($comunicati as $c) {
+            if ($c['id'] === $idDaModificare) {
+                $titoloAttuale = $c['titolo'];
+                $estrattoAttuale = $c['estratto'];
+                $testoHtml = trim($c['testo']);
+                $dataOriginale = $c['data'];
 
-            // Riconverte il testo HTML formattato in testo normale pulendo anche eventuali tag residui con strip_tags
-            $testoPulito = strip_tags($testoHtml, '<br>');
-            $testoGrezzoAttuale = str_replace(['<br>', "\n     "], ["\n", ""], $testoPulito);
-            $testoGrezzoAttuale = trim(preg_replace("/\n\s*\n/", "\n", $testoGrezzoAttuale));
-            
-            // Rimuove la firma fissa finale se presente per evitare duplicazioni al salvataggio
-            $testoGrezzoAttuale = preg_replace('/Il presidente\s*Carlo Maria Piccolo/i', '', $testoGrezzoAttuale);
-            $testoGrezzoAttuale = trim($testoGrezzoAttuale);
+                // Pulisce l'HTML per rimettere il testo grezzo nella textarea
+                $testoPulito = strip_tags($testoHtml, '<br>');
+                $testoGrezzoAttuale = str_replace(['<br>', "\n    "], ["\n", ""], $testoPulito);
+                $testoGrezzoAttuale = trim(preg_replace("/\n\s*\n/", "\n", $testoGrezzoAttuale));
+                
+                // Rimuove la firma fissa finale se presente
+                $testoGrezzoAttuale = preg_replace('/Il presidente\s*Carlo Maria Piccolo/i', '', $testoGrezzoAttuale);
+                $testoGrezzoAttuale = trim($testoGrezzoAttuale);
+                break;
+            }
         }
     }
 }
@@ -61,27 +62,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         foreach ($righe as $riga) {
             $rigaPulita = trim($riga);
             if (!empty($rigaPulita)) {
-                $testoFormattato .= "<p><strong>" . htmlspecialchars($rigaPulita, ENT_QUOTES, 'UTF-8') . "</strong></p>\n     <br>\n     ";
+                $testoFormattato .= "<p><strong>" . htmlspecialchars($rigaPulita, ENT_QUOTES, 'UTF-8') . "</strong></p><br>";
             } else {
-                $testoFormattato .= "<br>\n     ";
+                $testoFormattato .= "<br>";
             }
         }
         
-        $testoFormattato .= "<p><i>Il presidente</i></p>\n     <p><i>Carlo Maria Piccolo</i></p>";
+        $testoFormattato .= "<p><i>Il presidente</i></p><p><i>Carlo Maria Piccolo</i></p>";
 
-        $nuovoElementoJS = "  {\n" .
-            "    id: \"" . $idDaModificare . "\",\n" .
-            "    titolo: " . json_encode($nuovoTitolo) . ",\n" .
-            "    estratto: " . json_encode($nuovoEstratto) . ",\n" .
-            "    testo: `\n     " . $testoFormattato . "\n    `,\n" .
-            "    data: \"" . $dataOriginale . "\"\n" .
-            "  },";
-
-        // Sostituisce il vecchio blocco nel file script.js
-        $patternBlocco = '/\s*\{\s*id:\s*"' . preg_quote($idDaModificare, '/') . '".*?\},\s*/s';
-        $scriptContentNew = preg_replace($patternBlocco, "\n" . $nuovoElementoJS . "\n", $scriptContent);
-        
-        file_put_contents($scriptPath, $scriptContentNew);
+        // Aggiorna il file JSON
+        if (file_exists($jsonPath)) {
+            $comunicati = json_decode(file_get_contents($jsonPath), true);
+            if (is_array($comunicati)) {
+                foreach ($comunicati as &$c) {
+                    if ($c['id'] === $idDaModificare) {
+                        $c['titolo'] = $nuovoTitolo;
+                        $c['estratto'] = $nuovoEstratto;
+                        $c['testo'] = $testoFormattato;
+                        // Mantiene la data originale o la aggiorna se preferisci
+                        break;
+                    }
+                }
+                unset($c);
+                file_put_contents($jsonPath, json_encode($comunicati, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
+            }
+        }
 
         header("Location: comunicato.php?id=" . $idDaModificare);
         exit;

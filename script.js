@@ -1,64 +1,28 @@
 /**
- * 1. ARCHIVIO COMUNICATI
- * Per aggiungere un nuovo comunicato, incollalo IN CIMA a questa lista.
+ * 1. ARCHIVIO COMUNICATI (Caricato da file JSON esterno)
  */
-const comunicati = [{
-    id: "2",
-    titolo: "COMUNICATO UFFICIALE: ASTA DI RIPARAZIONE",
-    estratto: "Il Raspu Team commenta le mosse di riparazione, saluta Cuffy, Casadei e Cutrone e accoglie Lulli, Nico Gonzalez e Gnonto...",
-    testo: `
-      <p>Il Raspu Team interviene pubblicamente per esprimere il proprio sconcerto di fronte ad alcune mosse a dir poco terribili registrate in questa sessione di riparazione.</p>
-      <br>
-      <p>La società si augura vivamente che gli altri presidenti e allenatori possano ritrovare il senno e un minimo di lucidità da qui fino a gennaio, evitando ulteriori scempi calcistici.</p>
-      <br>
-      <p>Ci teniamo inoltre a ringraziare di cuore <b>Norton-Cuffy</b>, <b>Casadei</b> e <b>Cutrone</b> per l'impegno e la dedizione mostrati in queste prime due giornate, augurando loro il meglio per il prosieguo della carriera.</p>
-      <br>
-      <p>Al contempo, diamo un caloroso benvenuto ai nuovi acquisti <b>Lulli</b>, <b>Nico Gonzalez</b> e <b>Gnonto</b>, pronti a dare battaglia con la nostra maglia.</p>
-      <br>
-      <p>Si ricorda infine che il club resta aperto e disponibile per valutare eventuali scambi e trattative con chiunque voglia intavolare un discorso serio.</p>
-      <br>
-      <p><i>Il presidente</i></p>
-      <p><i>Carlo Maria Piccolo</i></p>
-    `,
-    data: "4 Settembre 2026 • 00:45"
-  },
-  {
-    id: "1",
-    titolo: "LANCIO DEL SITO WEB UFFICIALE",
-    estratto: "Il Raspu Team è lieto di annunciare il lancio del suo sito web ufficiale...",
-    testo: `
-      <p>Il Raspu Team è lieto di annunciare il lancio del suo sito web ufficiale, che rappresenta un nuovo passo nell'evoluzione della società e nella comunicazione con i propri tifosi.</p>
-      <br>
-      <p>Il nuovo sito offre un'esperienza utente migliorata e mette a disposizione informazioni aggiornate sulle attività della società, i risultati delle partite e le ultime notizie del mondo del calcio.</p>
-      <br>
-      <p><i>Il presidente</i></p>
-      <p><i>Carlo Maria Piccolo</i></p>
-    `,
-    data: "3 Settembre 2026 • 20:30"
+let comunicati = [];
+
+async function caricaComunicatiDaJson() {
+  try {
+    const response = await fetch('comunicati.json');
+    if (!response.ok) throw new Error('Errore nel caricamento del file JSON');
+    const dati = await response.json();
+    
+    // Filtriamo i comunicati escludendo l'id "0" per la pubblicazione pubblica,
+    // ma tenendo l'array completo o filtrato a seconda delle necessità.
+    // Qui filtriamo per mostrare solo dall'1 in poi nelle viste pubbliche.
+    comunicati = dati;
+
+    // Una volta caricati i dati, avviamo le funzioni dipendenti
+    aggiornaWidgetMatch();
+    caricaUltimoComunicatoHome();
+    caricaListaComunicati();
+    caricaSingoloComunicato();
+  } catch (error) {
+    console.error("Impossibile caricare i comunicati:", error);
   }
-  /*
-  //Comunicato scherzoso, per la mia fidanzata
-  {
-    id: "0",
-    titolo: "COMUNICATO UFFICIALE: LA MIA PIDANZATA È LA PIÙ BELLA DEL MONDO",
-    estratto: "Il Raspu Team vuole togliere ogni dubbio, e affermare che la sua pidanzata...",
-    testo: `
-      <p>Il RASPU TEAM vuole togliere ogni dubbio, e affermare che la sua pidanzata è la più bella del mondo.</p>
-      <br>
-      <p>Oggi, come ieri e come sarà per sempre, è importante ricordare che Tina Ghidoni è la miglior fidanzata del mondo, nonchè la più bella.</p>
-      <br>
-      <p>Questo comunicato è rivolto a tutti i tifosi del Raspu Team, che condividono la stessa passione e il medesimo orgoglio per la nostra squadra e per la mia pidanzata con la pisellina storta.</p>
-      <br>
-      <p>Inoltre vogliamo raggiungere ogni donna per far capire che io sono occupato e di proprietà di Tina Ghidoni.</p>
-      <br>
-      <p>Ti amo tanto pisellina! Sei speciale e unica! E RICORDA PER CHE SQUADRA TIFI (scusami ancora per Malen...)</p>
-      <br>
-      <p><i>Il presidente</i></p>
-      <p><i>Carlo Maria Piccolo</i></p>
-    `,
-    data: "5 Settembre 2026 • 14:45"
-  },*/
-];
+}
 
 /**
  * 2. CALENDARIO COMPLETO SERIE A (Date ufficiali da documento)
@@ -144,8 +108,11 @@ function caricaUltimoComunicatoHome() {
   const elemLink = document.getElementById("home-comunicato-link");
   const elemData = document.getElementById("home-comunicato-data");
 
-  if (elemTitolo && comunicati.length > 0) {
-    const ultimo = comunicati[0];
+  // Filtriamo i pubblicabili (id > "0")
+  const pubblicati = comunicati.filter(c => c.id !== "0");
+
+  if (elemTitolo && pubblicati.length > 0) {
+    const ultimo = pubblicati[0];
     elemTitolo.textContent = ultimo.titolo;
     elemEstratto.textContent = ultimo.estratto;
     elemLink.href = `comunicato.php?id=${ultimo.id}`;
@@ -158,7 +125,10 @@ function caricaListaComunicati() {
   if (!container) return;
 
   container.innerHTML = "";
-  comunicati.forEach(c => {
+  // Filtriamo i pubblicabili (id > "0")
+  const pubblicati = comunicati.filter(c => c.id !== "0");
+
+  pubblicati.forEach(c => {
     const html = `
       <article class="card-sidebar" style="padding: 15px;">
         <small style="color: var(--amaranto); font-weight: bold;">COMUNICATO N. ${c.id} • ${c.data}</small>
@@ -180,7 +150,10 @@ function caricaSingoloComunicato() {
 
   const params = new URLSearchParams(window.location.search);
   const id = params.get('id') || "1";
-  const articolo = comunicati.find(c => c.id === id) || comunicati[0];
+  
+  // Cerchiamo nell'elenco generale (se qualcuno avesse il link diretto, altrimenti fallback sul primo pubblicabile)
+  const pubblicati = comunicati.filter(c => c.id !== "0");
+  const articolo = comunicati.find(c => c.id === id) || pubblicati[0] || comunicati[0];
 
   elemTitolo.innerHTML = articolo.titolo;
   elemData.textContent = `Pubblicato il ${articolo.data}`;
@@ -191,8 +164,5 @@ function caricaSingoloComunicato() {
  * 4. AVVIO AUTOMATICO ALLA CARICA DELLA PAGINA
  */
 document.addEventListener("DOMContentLoaded", () => {
-  aggiornaWidgetMatch();
-  caricaUltimoComunicatoHome();
-  caricaListaComunicati();
-  caricaSingoloComunicato();
+  caricaComunicatiDaJson();
 });
