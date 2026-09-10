@@ -8,24 +8,7 @@
 </head>
 <body>
 
-  <header>
-    <div class="header-container">
-      <img src="img/stemma.png" alt="Logo Raspu Team" class="logo-header">
-      <div class="header-text">
-        <h1>RASPU TEAM</h1>
-        <p class="tagline">Sito Ufficiale • Fondato nel 2021 • Lega Terronica NEFALL</p>
-      </div>
-    </div>
-  </header>
-
-  <nav>
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="rosa.html">La squadra</a></li>
-      <li><a href="comunicazioni.html">Comunicazioni</a></li>
-      <li><a href="palmares.html" class="active">Palmarès</a></li>
-    </ul>
-  </nav>
+  <?php include 'header.php'; ?>
 
   <div class="container">
     <div class="main-layout" style="grid-template-columns: 1fr;">

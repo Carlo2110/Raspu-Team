@@ -8,24 +8,7 @@
 </head>
 <body>
 
-  <header>
-    <div class="header-container">
-      <img src="img/stemma.png" alt="Logo Raspu Team" class="logo-header">
-      <div class="header-text">
-        <h1>RASPU TEAM</h1>
-        <p class="tagline">Sito Ufficiale • Fondato nel 2021 • Lega Terronica NEFALL</p>
-      </div>
-    </div>
-  </header>
-
-  <nav>
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="rosa.html" class="active">La squadra</a></li>
-      <li><a href="comunicazioni.html">Comunicazioni</a></li>
-      <li><a href="palmares.html">Palmarès</a></li>
-    </ul>
-  </nav>
+  <?php include 'header.php'; ?>
 
   <div class="container">
     <div class="main-layout" style="grid-template-columns: 1fr;">
@@ -38,8 +21,8 @@
 
         <div style="margin-top: 20px; display: flex; flex-direction: column; gap: 20px;">
           <!-- Stagione 2026/2027 -->
-          <a href="rosa_2026-27.html" style="text-decoration: none;">
-            <article class="card-sidebar" style="padding: 20px; border-left: 5px solid var(--oro); display: flex; justify-content: space-between; align-items: center;">
+          <a href="rosa_2026-27.php" style="text-decoration: none;">
+            <article class="card-sidebar archivio-card" style="padding: 20px; border-left: 5px solid var(--oro); display: flex; justify-content: space-between; align-items: center;">
               <div>
                 <small style="color: var(--amaranto); font-weight: bold; text-transform: uppercase;">Stagione Corrente</small>
                 <h3 style="margin: 5px 0 8px 0; font-size: 1.5rem; color: var(--amaranto);">Stagione 2026/2027</h3>

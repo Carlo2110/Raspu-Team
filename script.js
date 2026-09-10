@@ -2,55 +2,7 @@
  * 1. ARCHIVIO COMUNICATI
  * Per aggiungere un nuovo comunicato, incollalo IN CIMA a questa lista.
  */
-const comunicati = [
-  
-  //Comunicato template
-  /*
-  {
-    id: "3",
-    titolo: "COMUNICATO UFFICIALE:",
-    estratto: "Il Raspu Team ...",
-    testo: `
-      <p></p>
-      <br>
-      <p></p>
-      <br>
-      <p></p>
-      <br>
-      <p></p>
-      <br>
-      <p></p>
-      <br>
-      <p><i>Il presidente</i></p>
-      <p><i>Carlo Maria Piccolo</i></p>
-    `,
-    data: "4 Settembre 2026 • 00:45"
-  },*/
-
-  /*
-  //Comunicato scherzoso, per la mia fidanzata
-  {
-    id: "3",
-    titolo: "COMUNICATO UFFICIALE: LA MIA PIDANZATA È LA PIÙ BELLA DEL MONDO",
-    estratto: "Il Raspu Team vuole togliere ogni dubbio, e affermare che la sua pidanzata...",
-    testo: `
-      <p>Il RASPU TEAM vuole togliere ogni dubbio, e affermare che la sua pidanzata è la più bella del mondo.</p>
-      <br>
-      <p>Oggi, come ieri e come sarà per sempre, è importante ricordare che Tina Ghidoni è la miglior fidanzata del mondo, nonchè la più bella.</p>
-      <br>
-      <p>Questo comunicato è rivolto a tutti i tifosi del Raspu Team, che condividono la stessa passione e il medesimo orgoglio per la nostra squadra e per la mia pidanzata con la pisellina storta.</p>
-      <br>
-      <p>Inoltre vogliamo raggiungere ogni donna per far capire che io sono occupato e di proprietà di Tina Ghidoni.</p>
-      <br>
-      <p>Ti amo tanto pisellina! Sei speciale e unica! E RICORDA PER CHE SQUADRA TIFI (scusami ancora per Malen...)</p>
-      <br>
-      <p><i>Il presidente</i></p>
-      <p><i>Carlo Maria Piccolo</i></p>
-    `,
-    data: "5 Settembre 2026 • 14:45"
-  },*/
-
-  {
+const comunicati = [{
     id: "2",
     titolo: "COMUNICATO UFFICIALE: ASTA DI RIPARAZIONE",
     estratto: "Il Raspu Team commenta le mosse di riparazione, saluta Cuffy, Casadei e Cutrone e accoglie Lulli, Nico Gonzalez e Gnonto...",
@@ -84,6 +36,28 @@ const comunicati = [
     `,
     data: "3 Settembre 2026 • 20:30"
   }
+  /*
+  //Comunicato scherzoso, per la mia fidanzata
+  {
+    id: "0",
+    titolo: "COMUNICATO UFFICIALE: LA MIA PIDANZATA È LA PIÙ BELLA DEL MONDO",
+    estratto: "Il Raspu Team vuole togliere ogni dubbio, e affermare che la sua pidanzata...",
+    testo: `
+      <p>Il RASPU TEAM vuole togliere ogni dubbio, e affermare che la sua pidanzata è la più bella del mondo.</p>
+      <br>
+      <p>Oggi, come ieri e come sarà per sempre, è importante ricordare che Tina Ghidoni è la miglior fidanzata del mondo, nonchè la più bella.</p>
+      <br>
+      <p>Questo comunicato è rivolto a tutti i tifosi del Raspu Team, che condividono la stessa passione e il medesimo orgoglio per la nostra squadra e per la mia pidanzata con la pisellina storta.</p>
+      <br>
+      <p>Inoltre vogliamo raggiungere ogni donna per far capire che io sono occupato e di proprietà di Tina Ghidoni.</p>
+      <br>
+      <p>Ti amo tanto pisellina! Sei speciale e unica! E RICORDA PER CHE SQUADRA TIFI (scusami ancora per Malen...)</p>
+      <br>
+      <p><i>Il presidente</i></p>
+      <p><i>Carlo Maria Piccolo</i></p>
+    `,
+    data: "5 Settembre 2026 • 14:45"
+  },*/
 ];
 
 /**
@@ -134,10 +108,8 @@ const calendarioRaspu = [
  * 3. FUNZIONI LOGICHE
  */
 
-// Aggiorna il widget del match in Home
 function aggiornaWidgetMatch() {
   const oggi = new Date();
-  
   let indexCorrente = calendarioRaspu.findIndex(m => new Date(m.dataLimite + "T23:59:59") >= oggi);
 
   if (indexCorrente === -1) {
@@ -166,7 +138,6 @@ function aggiornaWidgetMatch() {
   }
 }
 
-// Carica l'ultimo comunicato nella Home Page
 function caricaUltimoComunicatoHome() {
   const elemTitolo = document.getElementById("home-comunicato-titolo");
   const elemEstratto = document.getElementById("home-comunicato-estratto");
@@ -177,12 +148,11 @@ function caricaUltimoComunicatoHome() {
     const ultimo = comunicati[0];
     elemTitolo.textContent = ultimo.titolo;
     elemEstratto.textContent = ultimo.estratto;
-    elemLink.href = `comunicato.html?id=${ultimo.id}`;
+    elemLink.href = `comunicato.php?id=${ultimo.id}`;
     elemData.textContent = ultimo.data;
   }
 }
 
-// Carica l'elenco dei comunicati (in comunicazioni.html)
 function caricaListaComunicati() {
   const container = document.getElementById("lista-comunicati");
   if (!container) return;
@@ -194,14 +164,13 @@ function caricaListaComunicati() {
         <small style="color: var(--amaranto); font-weight: bold;">COMUNICATO N. ${c.id} • ${c.data}</small>
         <h3 style="margin: 5px 0 10px 0;">${c.titolo}</h3>
         <p style="font-weight: normal; margin-bottom: 10px;">${c.estratto}</p>
-        <a href="comunicato.html?id=${c.id}" class="read-more">Leggi il comunicato completo →</a>
+        <a href="comunicato.php?id=${c.id}" class="read-more">Leggi il comunicato completo →</a>
       </article>
     `;
     container.innerHTML += html;
   });
 }
 
-// Carica il singolo comunicato (in comunicato.html)
 function caricaSingoloComunicato() {
   const elemTitolo = document.getElementById("comunicato-titolo");
   const elemData = document.getElementById("comunicato-data");

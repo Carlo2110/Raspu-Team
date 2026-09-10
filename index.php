@@ -8,26 +8,7 @@
 </head>
 <body>
 
-  <header>
-    <div class="header-container">
-      <img src="img/stemma.png" alt="Logo Raspu Team" class="logo-header">
-      <div class="header-text">
-        <h1>RASPU TEAM</h1>
-        <p class="tagline">Sito Ufficiale • Fondato nel 2021 • Lega Terronica NEFALL</p>
-      </div>
-    </div>
-    <!-- Pulsante Area Presidente in alto a destra -->
-    <a href="admin.php" class="area-presidente-destra">Area Presidente</a>
-  </header>
-
-  <nav>
-    <ul>
-      <li><a href="index.html" class="active">Home</a></li>
-      <li><a href="rosa.html">La squadra</a></li>
-      <li><a href="comunicazioni.html">Comunicazioni</a></li>
-      <li><a href="palmares.html">Palmarès</a></li>
-    </ul>
-  </nav>
+  <?php include 'header.php'; ?>
 
   <div class="container grid-home">
     
@@ -51,7 +32,7 @@
         <div class="card-header">Ultimo Comunicato</div>
         <div class="card-body">
           <h4 id="home-comunicato-titolo">Caricamento...</h4>
-          <p id="home-comunicato-estratto"></p>
+          <p id="home-comunicato-estratto" class="testo-comunicato"></p>
           <a id="home-comunicato-link" href="#" class="read-more">Leggi tutto →</a>
           <small id="home-comunicato-data" class="date-tag"></small>
         </div>
@@ -60,7 +41,7 @@
       <!-- Box Mini Palmarès -->
       <div class="card-sidebar mini-palmares">
         <div class="card-header">
-          <a href="palmares.html" style="color: inherit; text-decoration: none;" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">Bacheca Rapida</a>
+          <a href="palmares.php" style="color: inherit; text-decoration: none;" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">Bacheca Rapida</a>
         </div>
         <div class="card-body trophy-list">
           <div class="trophy-item">🏆 <span>Coppa Italia (2025/26)</span></div>
@@ -73,7 +54,7 @@
       
       <section class="squad-section">
         <h2>LA ROSA TITOLARE</h2>
-        <a href="rosa_2026-27.html" style="text-decoration: none; display: block;">
+        <a href="rosa_2026-27.php" style="text-decoration: none; display: block;">
           <div class="squad-image-wrapper">
             <img src="img/titolari.png" alt="11 Titolari Raspu Team" class="img-titolari">
             <div class="image-overlay">L'11 Titolare per la Stagione 2026/2027</div>
@@ -84,7 +65,7 @@
       <section class="about-section">
         <img src="img/stemma.png" alt="Stemma Raspu Team" class="logo-main">
         <h3>CON LO SPIRITO E LA PASSIONE</h3>
-        <p class="motto">"Dalla fondazione alla, un giorno, conquista della lega."</p>
+        <p class="motto" style="font-weight: normal !important; font-style: italic;">"Dalla fondazione alla, un giorno, conquista della lega."</p>
       </section>
 
     </main>
