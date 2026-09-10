@@ -1,8 +1,8 @@
 <?php
 $host = "localhost";
-$db   = "rasputeam";
-$user = "root";
-$pass = "";
+$db   = "my_rasputeam"; // <--- Metti il prefisso my_
+$user = "rasputeam";    // <--- Il tuo utente AlterVista
+$pass = "";             // <--- Lascia vuoto
 $port = 3306;
 
 try {
