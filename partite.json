@@ -1,0 +1,268 @@
+[
+    {
+        "giornata": "1ª Giornata",
+        "casa": "RASPU TEAM",
+        "fuori": "Lecce Bombo",
+        "risultato": "3-2",
+        "stato": "conclusa"
+    },
+    {
+        "giornata": "2ª Giornata",
+        "casa": "LSB",
+        "fuori": "RASPU TEAM",
+        "risultato": "4-3",
+        "stato": "conclusa"
+    },
+    {
+        "giornata": "3ª Giornata",
+        "casa": "Real Madrink",
+        "fuori": "RASPU TEAM",
+        "risultato": "3-3",
+        "stato": "conclusa"
+    },
+    {
+        "giornata": "4ª Giornata",
+        "casa": "RASPU TEAM",
+        "fuori": "VIRTUAL PONTE",
+        "risultato": "-",
+        "stato": "attiva"
+    },
+    {
+        "giornata": "5ª Giornata",
+        "casa": "KDA Commando",
+        "fuori": "RASPU TEAM",
+        "risultato": "-",
+        "stato": "futura"
+    },
+    {
+        "giornata": "6ª Giornata",
+        "casa": "RASPU TEAM",
+        "fuori": "One Pisa",
+        "risultato": "-",
+        "stato": "futura"
+    },
+    {
+        "giornata": "7ª Giornata",
+        "casa": "Nu Genoa",
+        "fuori": "RASPU TEAM",
+        "risultato": "-",
+        "stato": "futura"
+    },
+    {
+        "giornata": "8ª Giornata",
+        "casa": "RASPU TEAM",
+        "fuori": "Real Madrink",
+        "risultato": "-",
+        "stato": "futura"
+    },
+    {
+        "giornata": "9ª Giornata",
+        "casa": "VIRTUAL PONTE",
+        "fuori": "RASPU TEAM",
+        "risultato": "-",
+        "stato": "futura"
+    },
+    {
+        "giornata": "10ª Giornata",
+        "casa": "RASPU TEAM",
+        "fuori": "Nu Genoa",
+        "risultato": "-",
+        "stato": "futura"
+    },
+    {
+        "giornata": "11ª Giornata",
+        "casa": "One Pisa",
+        "fuori": "RASPU TEAM",
+        "risultato": "-",
+        "stato": "futura"
+    },
+    {
+        "giornata": "12ª Giornata",
+        "casa": "RASPU TEAM",
+        "fuori": "KDA Commando",
+        "risultato": "-",
+        "stato": "futura"
+    },
+    {
+        "giornata": "13ª Giornata",
+        "casa": "RASPU TEAM",
+        "fuori": "LSB",
+        "risultato": "-",
+        "stato": "futura"
+    },
+    {
+        "giornata": "14ª Giornata",
+        "casa": "Lecce Bombo",
+        "fuori": "RASPU TEAM",
+        "risultato": "-",
+        "stato": "futura"
+    },
+    {
+        "giornata": "15ª Giornata",
+        "casa": "RASPU TEAM",
+        "fuori": "LSB",
+        "risultato": "-",
+        "stato": "futura"
+    },
+    {
+        "giornata": "16ª Giornata",
+        "casa": "Lecce Bombo",
+        "fuori": "RASPU TEAM",
+        "risultato": "-",
+        "stato": "futura"
+    },
+    {
+        "giornata": "17ª Giornata",
+        "casa": "RASPU TEAM",
+        "fuori": "KDA Commando",
+        "risultato": "-",
+        "stato": "futura"
+    },
+    {
+        "giornata": "18ª Giornata",
+        "casa": "Nu Genoa",
+        "fuori": "RASPU TEAM",
+        "risultato": "-",
+        "stato": "futura"
+    },
+    {
+        "giornata": "19ª Giornata",
+        "casa": "RASPU TEAM",
+        "fuori": "Real Madrink",
+        "risultato": "-",
+        "stato": "futura"
+    },
+    {
+        "giornata": "20ª Giornata",
+        "casa": "RASPU TEAM",
+        "fuori": "VIRTUAL PONTE",
+        "risultato": "-",
+        "stato": "futura"
+    },
+    {
+        "giornata": "21ª Giornata",
+        "casa": "One Pisa",
+        "fuori": "RASPU TEAM",
+        "risultato": "-",
+        "stato": "futura"
+    },
+    {
+        "giornata": "22ª Giornata",
+        "casa": "KDA Commando",
+        "fuori": "RASPU TEAM",
+        "risultato": "-",
+        "stato": "futura"
+    },
+    {
+        "giornata": "23ª Giornata",
+        "casa": "RASPU TEAM",
+        "fuori": "Nu Genoa",
+        "risultato": "-",
+        "stato": "futura"
+    },
+    {
+        "giornata": "24ª Giornata",
+        "casa": "VIRTUAL PONTE",
+        "fuori": "RASPU TEAM",
+        "risultato": "-",
+        "stato": "futura"
+    },
+    {
+        "giornata": "25ª Giornata",
+        "casa": "Real Madrink",
+        "fuori": "RASPU TEAM",
+        "risultato": "-",
+        "stato": "futura"
+    },
+    {
+        "giornata": "26ª Giornata",
+        "casa": "RASPU TEAM",
+        "fuori": "Lecce Bombo",
+        "risultato": "-",
+        "stato": "futura"
+    },
+    {
+        "giornata": "27ª Giornata",
+        "casa": "LSB",
+        "fuori": "RASPU TEAM",
+        "risultato": "-",
+        "stato": "futura"
+    },
+    {
+        "giornata": "28ª Giornata",
+        "casa": "RASPU TEAM",
+        "fuori": "One Pisa",
+        "risultato": "-",
+        "stato": "futura"
+    },
+    {
+        "giornata": "29ª Giornata",
+        "casa": "Real Madrink",
+        "fuori": "RASPU TEAM",
+        "risultato": "-",
+        "stato": "futura"
+    },
+    {
+        "giornata": "30ª Giornata",
+        "casa": "RASPU TEAM",
+        "fuori": "LSB",
+        "risultato": "-",
+        "stato": "futura"
+    },
+    {
+        "giornata": "31ª Giornata",
+        "casa": "RASPU TEAM",
+        "fuori": "VIRTUAL PONTE",
+        "risultato": "-",
+        "stato": "futura"
+    },
+    {
+        "giornata": "32ª Giornata",
+        "casa": "Nu Genoa",
+        "fuori": "RASPU TEAM",
+        "risultato": "-",
+        "stato": "futura"
+    },
+    {
+        "giornata": "33ª Giornata",
+        "casa": "RASPU TEAM",
+        "fuori": "KDA Commando",
+        "risultato": "-",
+        "stato": "futura"
+    },
+    {
+        "giornata": "34ª Giornata",
+        "casa": "Lecce Bombo",
+        "fuori": "RASPU TEAM",
+        "risultato": "-",
+        "stato": "futura"
+    },
+    {
+        "giornata": "35ª Giornata",
+        "casa": "RASPU TEAM",
+        "fuori": "One Pisa",
+        "risultato": "-",
+        "stato": "futura"
+    },
+    {
+        "giornata": "36ª Giornata",
+        "casa": "RASPU TEAM",
+        "fuori": "Nu Genoa",
+        "risultato": "-",
+        "stato": "futura"
+    },
+    {
+        "giornata": "37ª Giornata",
+        "casa": "LSB",
+        "fuori": "RASPU TEAM",
+        "risultato": "-",
+        "stato": "futura"
+    },
+    {
+        "giornata": "38ª Giornata",
+        "casa": "KDA Commando",
+        "fuori": "RASPU TEAM",
+        "risultato": "-",
+        "stato": "futura"
+    }
+]

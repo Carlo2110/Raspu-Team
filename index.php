@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -16,7 +19,12 @@
       
       <!-- Box Prossima Partita (Dinamico) -->
       <div class="card-sidebar match-widget">
-        <div class="card-header" id="giornata-titolo">Prossimo Match</div>
+        <div class="card-header" style="display: flex; justify-content: space-between; align-items: center;">
+          <span id="giornata-titolo">Prossimo Match</span>
+          <?php if (isset($_SESSION['user'])): ?>
+            <a href="gestione_partita.php" style="background: #28a745; color: white; text-decoration: none; padding: 1px 4px; font-size: 8px; font-weight: bold; border-radius: 2px; text-align: center; line-height: 1; display: inline-block;">aggiorna<br>risultato</a>
+          <?php endif; ?>
+        </div>
         <div class="card-body match-body">
           <div class="match-teams">
             <span class="team-home">RASPU TEAM</span>
