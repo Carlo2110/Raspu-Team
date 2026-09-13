@@ -1,0 +1,7 @@
+
+// Codice da usare per la passoword
+<?php
+echo password_hash("Passw", PASSWORD_DEFAULT);
+?>
+
+// sito dove usare il codice https://onlinephp.io/
