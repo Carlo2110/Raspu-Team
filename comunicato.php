@@ -3,13 +3,34 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 $isLogged = isset($_SESSION['user']);
+
+// --- LOGICA BACKEND PHP PER I META TAG WHATSAPP ---
+$fileJson = __DIR__ . '/comunicati.json';
+$idRichiesto = isset($_GET['id']) ? intval($_GET['id']) : 0;
+$comunicatoTrovato = null;
+
+if (file_exists($fileJson)) {
+    $contenuto = file_get_contents($fileJson);
+    $comunicati = json_decode($contenuto, true) ?: [];
+    foreach ($comunicati as $c) {
+        if (isset($c['id']) && intval($c['id']) === $idRichiesto) {
+            $comunicatoTrovato = $c;
+            break;
+        }
+    }
+}
+
+// Titolo dinamico senza "Comunicato N."
+$titoloPagina = $comunicatoTrovato ? $comunicatoTrovato['titolo'] . " - Raspu Team" : "Comunicato Ufficiale - Raspu Team";
+$descrizioneMeta = $comunicatoTrovato ? (isset($comunicatoTrovato['estratto']) ? $comunicatoTrovato['estratto'] : mb_substr(strip_tags($comunicatoTrovato['testo']), 0, 120) . "...") : "Comunicato ufficiale diramato dalla presidenza del Raspu Team.";
+$urlCorrente = "https://rasputeam.altervista.org/comunicato.php?id=" . $idRichiesto;
 ?>
 <!DOCTYPE html>
 <html lang="it">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Comunicato Ufficiale - Raspu Team</title>
+  <title><?php echo htmlspecialchars($titoloPagina); ?></title>
   <link rel="stylesheet" href="style.css">
   <style>
     .comunicato-top-bar {
@@ -123,15 +144,15 @@ $isLogged = isset($_SESSION['user']);
     }
   </style>
 
-  <!-- TAG OPEN GRAPH PER ANTEPRIMA WHATSAPP -->
-  <meta property="og:title" content="Raspu Team - Comunicato Ufficiale" />
-  <meta property="og:description" content="Comunicato ufficiale diramato dalla presidenza del Raspu Team." />
+  <!-- TAG OPEN GRAPH DINAMICI PER ANTEPRIMA WHATSAPP -->
+  <meta property="og:title" content="<?php echo htmlspecialchars($titoloPagina); ?>" />
+  <meta property="og:description" content="<?php echo htmlspecialchars($descrizioneMeta); ?>" />
   <meta property="og:image" content="https://rasputeam.altervista.org/img/stemma.jpg" />
   <meta property="og:image:secure_url" content="https://rasputeam.altervista.org/img/stemma.jpg" />
   <meta property="og:image:type" content="image/jpeg" />
   <meta property="og:image:width" content="1024" />
   <meta property="og:image:height" content="1024" />
-  <meta property="og:url" content="https://rasputeam.altervista.org/comunicato.php" />
+  <meta property="og:url" content="<?php echo htmlspecialchars($urlCorrente); ?>" />
   <meta property="og:type" content="website" />
 </head>
 <body>
