@@ -72,4 +72,4 @@ if (session_status() === PHP_SESSION_NONE) {
 
   <script src="script.js"></script>
 </body>
-</html>
+</html>
