@@ -31,6 +31,11 @@ $urlCorrente = "https://rasputeam.altervista.org/comunicato.php?id=" . $idRichie
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title><?php echo htmlspecialchars($titoloPagina); ?></title>
+  
+  <!-- FAVICON RASPU TEAM -->
+  <link rel="icon" type="image/png" href="img/stemma.png">
+  <link rel="apple-touch-icon" href="img/stemma.png">
+  
   <link rel="stylesheet" href="style.css">
   <style>
     .comunicato-top-bar {
